@@ -1,0 +1,11 @@
+.content {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(249, 226, 176);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(89, 89, 160);
+  margin: 16px;
+}
