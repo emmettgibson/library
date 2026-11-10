@@ -1,3 +1,5 @@
+
+/*
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -11,91 +13,265 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read));
 }
+*/
 
-//Object.getPrototypeOf(myLibrary[0]) === Book.prototype;
-
-addBookToLibrary("Go, Dog. Go!", "P.D. Eastman", 64, "Yes");
-addBookToLibrary("Holes", "Louis Sachar", 233, "Yes");
-addBookToLibrary("Musashi", "Eiji Yoshikawa", 970, "No");
-addBookToLibrary("Uzumaki", "Junji Ito", 653, "Yes");
 
 
 
 /*
-const content = document.createElement("div");
-content.classList.add("content");
-document.body.appendChild(content);
+addBookToLibrary("Go, Dog. Go!", "P.D. Eastman", 64, "Yes");
+addBookToLibrary("Holes", "Louis Sachar", 233, "Yes");
+addBookToLibrary("Musashi", "Eiji Yoshikawa", 970, "No");
+addBookToLibrary("Uzumaki", "Junji Ito", 653, "Yes");
+*/
 
-let title = document.createElement("p");
-title.textContent = `Title: ${myLibrary[0].title}`
-content.appendChild(title);
+/*
+let newBook = document.querySelector("#newBook");
+newBook.addEventListener("click", () => {
+let titlePrompt = prompt("Title?");
+let authorPrompt = prompt("Author?");
+let pagePrompt = prompt("Number of pages?");
+let readPrompt = prompt("Have your read this book?")
 
-let author = document.createElement("p");
-author.textContent = `Author: ${myLibrary[0].author}`
-content.appendChild(author);
+addBookToLibrary(titlePrompt, authorPrompt, pagePrompt, readPrompt)
 
-let pages = document.createElement("p");
-pages.textContent = `Pages: ${myLibrary[0].pages}`
-content.appendChild(pages);
+for(let item in myLibrary) {
+  const content = document.createElement("div");
+  content.classList.add("content");
+  document.body.appendChild(content);
+  
+  let title = document.createElement("p");
+  title.textContent = `Title: ${myLibrary[item].title}`
+  content.appendChild(title);
+  
+  let author = document.createElement("p");
+  author.textContent = `Author: ${myLibrary[item].author}`
+  content.appendChild(author);
+  
+  let pages = document.createElement("p");
+  pages.textContent = `Pages: ${myLibrary[item].pages}`
+  content.appendChild(pages);
+  
+  let read = document.createElement("p");
+  read.textContent = `Read: ${myLibrary[item].read}`
+  content.appendChild(read);
+  }
+});
+*/
 
-let read = document.createElement("p");
-read.textContent = `Read: ${myLibrary[0].read}`
-content.appendChild(read);
+  /*
+newBook.addEventListener("click", () => {
+const myLibrary = [];
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages= pages;
+  this.read = read;
+  this.id = crypto.randomUUID();
+}
+function addBookToLibrary(title, author, pages, read) {
+  myLibrary.push(new Book(title, author, pages, read));
+}
+addBookToLibrary(prompt("Title?"), prompt("Author?"), prompt("Pages?"), prompt("Read?"))
+
+for(let item in myLibrary) {
+  const content = document.createElement("div");
+  content.classList.add("content");
+  document.body.appendChild(content);
+  
+  let title = document.createElement("p");
+  title.textContent = `Title: ${myLibrary[item].title}`
+  content.appendChild(title);
+  
+  let author = document.createElement("p");
+  author.textContent = `Author: ${myLibrary[item].author}`
+  content.appendChild(author);
+  
+  let pages = document.createElement("p");
+  pages.textContent = `Pages: ${myLibrary[item].pages}`
+  content.appendChild(pages);
+  
+ let read = document.createElement("p");
+  read.textContent = `Read: ${myLibrary[item].read}`
+  content.appendChild(read);
+  }
+  const content = document.createElement("div");
+  content.classList.add("content");
+  document.body.appendChild(content);
+
+  let deleteBook = document.createElement("button");
+  deleteBook.textContent = "Delete book"
+  content.appendChild(deleteBook);
+
+});
 */
 
 
-for(let item in myLibrary) {
-const content = document.createElement("div");
-content.classList.add("content");
-document.body.appendChild(content);
 
-let title = document.createElement("p");
-title.textContent = `Title: ${myLibrary[item].title}`
-content.appendChild(title);
 
-let author = document.createElement("p");
-author.textContent = `Author: ${myLibrary[item].author}`
-content.appendChild(author);
 
-let pages = document.createElement("p");
-pages.textContent = `Pages: ${myLibrary[item].pages}`
-content.appendChild(pages);
 
-let read = document.createElement("p");
-read.textContent = `Read: ${myLibrary[item].read}`
-content.appendChild(read);
+
+
+
+
+
+
+
+
+
+//myLibrary is creating an array for each item
+/*
+newBook.addEventListener("click", () => {
+  const myLibrary = [];
+  
+  function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages= pages;
+    this.read = read;
+    this.id = crypto.randomUUID();
+  }
+  function addBookToLibrary(title, author, pages, read) {
+    myLibrary.push(new Book(title, author, pages, read));
+  }
+  
+  addBookToLibrary(prompt("Title?"), prompt("Author?"), prompt("Pages?"), prompt("Read?"))
+  
+  for(let item in myLibrary) {
+    const content = document.createElement("div");
+    content.classList.add("content");
+    document.body.appendChild(content);
+    
+    let title = document.createElement("p");
+    title.textContent = `Title: ${myLibrary[item].title}`
+    content.appendChild(title);
+    
+    let author = document.createElement("p");
+    author.textContent = `Author: ${myLibrary[item].author}`
+    content.appendChild(author);
+    
+    let pages = document.createElement("p");
+    pages.textContent = `Pages: ${myLibrary[item].pages}`
+    content.appendChild(pages);
+    
+    let read = document.createElement("p");
+    read.textContent = `Read: ${myLibrary[item].read}`
+    content.appendChild(read);
+  
+    let deleteBook = document.createElement("button");
+    deleteBook.textContent = "Delete book"
+    content.appendChild(deleteBook);
+    deleteBook.addEventListener("click", () => {
+    content.remove(content);
+      for (let item in myLibrary) {
+        myLibrary.splice(item, 1)
+        console.log(myLibrary[item])
+    }
+    })
+    let checkArray = document.createElement("button");
+    checkArray.textContent = "Check array";
+    content.appendChild(checkArray);
+    checkArray.addEventListener("click", () => {
+        for (let item in myLibrary) {
+          console.log(myLibrary)
+      }
+    });
+    } 
+  });
+*/
+/*
+let array = [1, 2, 3, 4];
+
+for (let item in array) {
+    if (array[item] === 3) {
+        array.splice(item, 1)
+    }
+};
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages= pages;
+  this.read = read;
+  this.id = crypto.randomUUID();
+}
+function addBookToLibrary(title, author, pages, read) {
+  let newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  return newBook;
+
 }
 
-let newBook = document.querySelector("#newBook");
+
 newBook.addEventListener("click", () => {
-  alert("Hello");
+
+  let title = prompt("Title?");
+  let author = prompt("Author?");
+  let pages = prompt("Page number?");
+  let read = prompt("Read?");
+
+  let book = addBookToLibrary(title, author, pages, read);
+  console.log(myLibrary);
+  console.log(`book = ${book.id}`);
+
+  const content = document.createElement("div");
+  content.classList.add("content");
+  document.body.appendChild(content);
+  
+  let titleCreate = document.createElement("p");
+  titleCreate.textContent = `Title: ${title}`
+  content.appendChild(titleCreate);
+  
+  let authorCreate = document.createElement("p");
+  authorCreate.textContent = `Author: ${author}`
+  content.appendChild(authorCreate);
+  
+  let pagesCreate = document.createElement("p");
+  pagesCreate.textContent = `Pages: ${pages}`
+  content.appendChild(pagesCreate);
+  
+  let readCreate = document.createElement("p");
+  readCreate.textContent = `Read: ${read}`
+  content.appendChild(readCreate);
+
+
+
+  
+
+  let deleteBook = document.createElement("button");
+  deleteBook.textContent = "Delete book"
+  content.appendChild(deleteBook);
+  deleteBook.addEventListener("click", () => {
+  content.remove(content);
+  for(let item in myLibrary) {
+    if(myLibrary[item].id === book.id) {
+      myLibrary.splice(item, 1);
+      console.log(myLibrary);
+    }
+  }
+  })
+
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

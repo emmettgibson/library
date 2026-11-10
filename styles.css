@@ -9,3 +9,7 @@
   color: rgb(89, 89, 160);
   margin: 16px;
 }
+
+fieldset {
+  width: 20%;
+}
