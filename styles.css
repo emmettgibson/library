@@ -11,5 +11,10 @@
 }
 
 fieldset {
-  width: 20%;
+  width: 15%;
+  padding: 16px;
+}
+
+fieldset > div {
+  margin-bottom: 8px;
 }

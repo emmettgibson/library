@@ -206,23 +206,10 @@ for (let item in array) {
 
 
 
-let myLibrary = [];
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages= pages;
-  this.read = read;
-  this.id = crypto.randomUUID();
-}
-function addBookToLibrary(title, author, pages, read) {
-  let newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
-  return newBook;
-
-}
 
 
+//Prompt button
+/*
 newBook.addEventListener("click", () => {
 
   let title = prompt("Title?");
@@ -272,6 +259,7 @@ newBook.addEventListener("click", () => {
   })
 
 })
+*/
 
 
 
@@ -281,14 +269,80 @@ newBook.addEventListener("click", () => {
 
 
 
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages= pages;
+  this.read = read;
+  this.id = crypto.randomUUID();
+}
+function addBookToLibrary(title, author, pages, read) {
+  let newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  return newBook;
+}
+
+newBook.addEventListener("click", (event) => {
+
+  let title = document.querySelector("#title");
+  let author = document.querySelector("#author");
+  let pages = document.querySelector("#pages");
+  let read = document.querySelector("#read");
+
+if (title.value !== "" && author.value !== "" && pages.value !== "") {
+
+  event.preventDefault();
+
+  let book = addBookToLibrary(title.value, author.value, pages.value, read.value);
+  console.log(myLibrary);
+  console.log(`book = ${book.id}`);
+
+  const content = document.createElement("div");
+  content.classList.add("content");
+  document.body.appendChild(content);
+  
+  let titleCreate = document.createElement("p");
+  titleCreate.textContent = `Title: ${title.value}`
+  content.appendChild(titleCreate);
+  
+  let authorCreate = document.createElement("p");
+  authorCreate.textContent = `Author: ${author.value}`
+  content.appendChild(authorCreate);
+  
+  let pagesCreate = document.createElement("p");
+  pagesCreate.textContent = `Pages: ${pages.value}`
+  content.appendChild(pagesCreate);
+  
+  let readCreate = document.createElement("p");
+
+  readCreate.textContent = `Read: ${read.value}`;
+  content.appendChild(readCreate);
+
+  let deleteBook = document.createElement("button");
+  deleteBook.textContent = "Delete book"
+  content.appendChild(deleteBook);
+  deleteBook.addEventListener("click", () => {
+  content.remove(content);
+  for(let item in myLibrary) {
+    if(myLibrary[item].id === book.id) {
+      myLibrary.splice(item, 1);
+      console.log(myLibrary);
+    }
+  }
+  })
+
+title.value = null;
+author.value = null;
+pages.value = null;
+read.checked = null;
+}
 
 
 
 
-
-
-
-
+})
 
 
 
