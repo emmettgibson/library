@@ -1,6 +1,6 @@
 .content {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   background-color: rgb(249, 226, 176);
   padding: 16px;
   display: flex;
@@ -16,5 +16,45 @@ fieldset {
 }
 
 fieldset > div {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.buttonsAndSelects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.deleteBook, .readStatus{
+  width: 50%;
+  margin-right: 16px;
+}
+
+.buttonDiv {
+  display: flex;
+}
+
+
+
+.backGround {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.readStatusChange {
+  height: 450px;
+  width: 400px;
+  z-index: 4;
+  background-color: white;
+  margin-bottom: 4em;
+  border-radius: 16px;
 }

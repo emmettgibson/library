@@ -284,6 +284,8 @@ function addBookToLibrary(title, author, pages, read) {
   return newBook;
 }
 
+
+
 newBook.addEventListener("click", (event) => {
 
   let title = document.querySelector("#title");
@@ -316,14 +318,48 @@ if (title.value !== "" && author.value !== "" && pages.value !== "") {
   content.appendChild(pagesCreate);
   
   let readCreate = document.createElement("p");
-
   readCreate.textContent = `Read: ${read.value}`;
   content.appendChild(readCreate);
 
+  let buttonDiv = document.createElement("div");
+  buttonDiv.classList.add("buttonDiv");
+  content.appendChild(buttonDiv);
+
+
+  //readStatus.setAttribute("id","readStatus");
+  //readStatus.setAttribute("name","readStatus");
+
+
+
+  /*
+  let yesOption = document.createElement("option");
+  yesOption.textContent = "Yes";
+  yesOption.value = "Yes";
+  readStatus.appendChild(yesOption);
+
+  let noOption = document.createElement("option");
+  noOption.textContent = "No";
+  noOption.value = "No";
+  readStatus.appendChild(noOption);
+
+  let currentlyReading = document.createElement("option");
+  currentlyReading.textContent = "Currently reading";
+  currentlyReading.value = "Currently reading";
+  readStatus.appendChild(currentlyReading);
+
+  let wantToRead = document.createElement("option");
+  wantToRead.textContent = "Want to read";
+  wantToRead.value = "Want to read";
+  readStatus.appendChild(wantToRead);
+*/
+
   let deleteBook = document.createElement("button");
+  deleteBook.classList.add("deleteBook");
   deleteBook.textContent = "Delete book"
-  content.appendChild(deleteBook);
+  buttonDiv.appendChild(deleteBook);
   deleteBook.addEventListener("click", () => {
+  let areYouSure = confirm("Are you sure you want to delete this book?");
+  if(areYouSure === true) {
   content.remove(content);
   for(let item in myLibrary) {
     if(myLibrary[item].id === book.id) {
@@ -331,8 +367,26 @@ if (title.value !== "" && author.value !== "" && pages.value !== "") {
       console.log(myLibrary);
     }
   }
+}
+
   })
 
+
+  let readStatus = document.createElement("button");
+  readStatus.classList.add("readStatus");
+  readStatus.textContent = "Read status"
+  buttonDiv.appendChild(readStatus);
+  readStatus.addEventListener("click", () => {
+  let backGround = document.createElement("div");
+  backGround.classList.add("backGround");
+  document.body.append(backGround);
+  let readStatusChange = document.createElement("div");
+  readStatusChange.classList.add("readStatusChange");
+  backGround.appendChild(readStatusChange);
+  })
+
+
+//Clears form values
 title.value = null;
 author.value = null;
 pages.value = null;
@@ -340,10 +394,15 @@ read.checked = null;
 }
 
 
+function changeReadStatus (read) {
+  this.read = read;
+
+  readCreate.textContent = `Read: ${read.value}`;
+
+}
 
 
 })
-
 
 
 
