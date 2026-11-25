@@ -285,9 +285,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 
-
 newBook.addEventListener("click", (event) => {
-
+  
   let title = document.querySelector("#title");
   let author = document.querySelector("#author");
   let pages = document.querySelector("#pages");
@@ -300,6 +299,10 @@ if (title.value !== "" && author.value !== "" && pages.value !== "") {
   let book = addBookToLibrary(title.value, author.value, pages.value, read.value);
   console.log(myLibrary);
   console.log(`book = ${book.id}`);
+
+  function changeReadStatus(value) {
+    book.read = value;
+  }
 
   const content = document.createElement("div");
   content.classList.add("content");
@@ -325,34 +328,6 @@ if (title.value !== "" && author.value !== "" && pages.value !== "") {
   buttonDiv.classList.add("buttonDiv");
   content.appendChild(buttonDiv);
 
-
-  //readStatus.setAttribute("id","readStatus");
-  //readStatus.setAttribute("name","readStatus");
-
-
-
-  /*
-  let yesOption = document.createElement("option");
-  yesOption.textContent = "Yes";
-  yesOption.value = "Yes";
-  readStatus.appendChild(yesOption);
-
-  let noOption = document.createElement("option");
-  noOption.textContent = "No";
-  noOption.value = "No";
-  readStatus.appendChild(noOption);
-
-  let currentlyReading = document.createElement("option");
-  currentlyReading.textContent = "Currently reading";
-  currentlyReading.value = "Currently reading";
-  readStatus.appendChild(currentlyReading);
-
-  let wantToRead = document.createElement("option");
-  wantToRead.textContent = "Want to read";
-  wantToRead.value = "Want to read";
-  readStatus.appendChild(wantToRead);
-*/
-
   let deleteBook = document.createElement("button");
   deleteBook.classList.add("deleteBook");
   deleteBook.textContent = "Delete book"
@@ -368,7 +343,6 @@ if (title.value !== "" && author.value !== "" && pages.value !== "") {
     }
   }
 }
-
   })
 
 
@@ -379,10 +353,107 @@ if (title.value !== "" && author.value !== "" && pages.value !== "") {
   readStatus.addEventListener("click", () => {
   let backGround = document.createElement("div");
   backGround.classList.add("backGround");
-  document.body.append(backGround);
+  document.body.appendChild(backGround);
   let readStatusChange = document.createElement("div");
   readStatusChange.classList.add("readStatusChange");
   backGround.appendChild(readStatusChange);
+  let headerDiv = document.createElement("div");
+  headerDiv.classList.add("headerDiv");
+  let header = document.createElement("p");
+  header.textContent = "Change the read status for this book";
+  headerDiv.appendChild(header);
+  readStatusChange.appendChild(headerDiv);
+  let closeButton = document.createElement("img");
+  closeButton.classList.add("button");
+  closeButton.setAttribute("id", "closeButton")
+  closeButton.src = "close-x-svgrepo-com(1).svg";
+  headerDiv.appendChild(closeButton);
+
+  let buttonDivReadStatus = document.createElement("div");
+  buttonDivReadStatus.classList.add("buttonDivReadStatus");
+  readStatusChange.appendChild(buttonDivReadStatus);
+
+  let yesButton = document.createElement("button");
+  yesButton.classList.add("button");
+  yesButton.setAttribute("id", "yesButton");
+  yesButton.textContent = "Yes";
+  yesButton.style.zIndex = 1000;
+  buttonDivReadStatus.appendChild(yesButton);
+  yesButton.addEventListener("click", () => {
+
+  changeReadStatus(yesButton.textContent);
+  content.appendChild(titleCreate);
+  content.appendChild(authorCreate);
+  content.appendChild(pagesCreate);
+  readCreate.textContent = `Read: ${yesButton.textContent}`;
+  content.appendChild(readCreate);
+  content.appendChild(buttonDiv);
+  document.body.removeChild(backGround);
+  backGround.removeChild(readStatusChange);
+  console.log(myLibrary);
+
+  })
+
+  let noButton = document.createElement("button");
+  noButton.classList.add("button");
+  noButton.setAttribute("id", "noButton");
+  noButton.textContent = "No";
+  noButton.style.zIndex = 1000;
+  buttonDivReadStatus.appendChild(noButton);
+  noButton.addEventListener("click", () => {
+
+    changeReadStatus(noButton.textContent);
+    content.appendChild(titleCreate);
+    content.appendChild(authorCreate);
+    content.appendChild(pagesCreate);
+    readCreate.textContent = `Read: ${noButton.textContent}`;
+    content.appendChild(readCreate);
+    content.appendChild(buttonDiv);
+    document.body.removeChild(backGround);
+    backGround.removeChild(readStatusChange);
+  
+    })
+
+  let currentlyReading = document.createElement("button");
+  currentlyReading.classList.add("button")
+  currentlyReading.setAttribute("id", "currentlyReading");
+  currentlyReading.textContent = "Currently reading";
+  currentlyReading.style.zIndex = 1000;
+  buttonDivReadStatus.appendChild(currentlyReading);
+  currentlyReading.addEventListener("click", () => {
+    changeReadStatus(currentlyReading.textContent);
+    content.appendChild(titleCreate);
+    content.appendChild(authorCreate);
+    content.appendChild(pagesCreate);
+    readCreate.textContent = `Read: ${currentlyReading.textContent}`;
+    content.appendChild(readCreate);
+    content.appendChild(buttonDiv);
+    document.body.removeChild(backGround);
+    backGround.removeChild(readStatusChange);
+    });
+
+  let wantToRead = document.createElement("button");
+  wantToRead.classList.add("button")
+  wantToRead.setAttribute("id", "wantToRead");
+  wantToRead.textContent = "Want to read";
+  wantToRead.style.zIndex = 1000;
+  buttonDivReadStatus.appendChild(wantToRead);
+  wantToRead.addEventListener("click", () => {
+    changeReadStatus(wantToRead.textContent);
+    content.appendChild(titleCreate);
+    content.appendChild(authorCreate);
+    content.appendChild(pagesCreate);
+    readCreate.textContent = `Read: ${wantToRead.textContent}`;
+    content.appendChild(readCreate);
+    content.appendChild(buttonDiv);
+    document.body.removeChild(backGround);
+    backGround.removeChild(readStatusChange);
+    });
+
+  closeButton.addEventListener("click", () => {
+    document.body.removeChild(backGround);
+    backGround.removeChild(readStatusChange);
+  })
   })
 
 
@@ -392,41 +463,4 @@ author.value = null;
 pages.value = null;
 read.checked = null;
 }
-
-
-function changeReadStatus (read) {
-  this.read = read;
-
-  readCreate.textContent = `Read: ${read.value}`;
-
-}
-
-
 })
-
-
-
-
-
-
-
-
-/*
-for(let item in myLibrary) {
-alert(`
-Title: ${myLibrary[item].title}
-Author: ${myLibrary[item].author}
-Pages: ${myLibrary[item].pages}
-Read: ${myLibrary[item].read}
-`)
-}
-*/
-
-/*
-word.textContent = (`
-  Title: ${myLibrary[0].title}
-  Author: ${myLibrary[0].author}
-  Pages: ${myLibrary[0].pages}
-  Read: ${myLibrary[0].read}
-  `);
-*/
